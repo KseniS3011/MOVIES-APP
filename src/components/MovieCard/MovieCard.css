@@ -1,0 +1,72 @@
+.movie-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 183px auto;
+    grid-template-rows: auto auto auto 129px 46px;
+    gap: 7px 19px;
+    max-width: 454px;
+    height: 281px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.movie-card__img {
+    background-image: url(../../assets/images/poster.jpg);
+    background-size: cover;
+    width: 183px;
+    height: 281px;
+    grid-row: 1/6; 
+    grid-column: 1/2; 
+}
+
+.movie-card__name {
+    margin-top: 12px;
+    Font-size: 20px;
+    Line-height: 28px;
+    max-width: 200px;
+    max-height: 28px;
+    overflow: hidden;
+}
+
+.movie-card__date {
+    Font-size: 12px;
+    Line-height: 22px;
+    color: #827E7E;
+}
+
+.movie-card__genre {
+    display: flex;
+    gap: 7px;
+}
+
+.movie-card__genre-button {
+    border: solid 1px #D9D9D9;
+    border-radius: 2px;
+    background-color: #FAFAFA;
+}
+
+.movie-card__description {
+    overflow: hidden;
+}
+
+.movie-card__star-raiting {
+
+}
+
+.movie-card__raiting {
+    position: absolute;
+    top: 9px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    border: solid 2px #E9D100;
+    border-radius: 50%;
+    Font-size: 12px;
+    Line-height: 22px;
+}
