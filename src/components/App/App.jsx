@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   handleRenderMovieList(movieList) {
-    console.log(movieList)
+    // console.log(movieList)
     const newMovieList = movieList.map((movie) => {
       const url = movie.poster_path === null ? defaultPoster : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
       const dateRelease = movie.release_date ? format(new Date(movie.release_date), 'MMMM dd, yyyy') : 'No release date'
@@ -109,7 +109,7 @@ class App extends Component {
     // this.setState((prevSatate) => {
     //   return { ...prevSatate, inputValue: event.target.value }
     // })
-    console.log(this.state.movies)
+    // console.log(this.state.movies)
   }
 
   // eslint-disable-next-line class-methods-use-this
