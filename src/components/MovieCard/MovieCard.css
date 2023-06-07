@@ -1,15 +1,16 @@
 .movie-card {
     position: relative;
     display: grid;
-    grid-template-columns: 183px auto;
+    grid-template-columns: 183px 228px;
     grid-template-rows: auto auto 20px 129px 46px;
     gap: 7px 19px;
     width: 454px;
     height: 281px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
-    cursor: pointer;
+    border-radius: 4px;
     padding-right: 20px;
+    overflow: hidden;
 }
 
 .movie-card__img {
@@ -35,6 +36,7 @@
 }
 
 .movie-card__genre {
+    width: 300px;
     display: flex;
     gap: 6px;
     box-sizing: border-box;
@@ -58,7 +60,6 @@
     display: flex;
     gap: 3px;
     max-height: 15px;
-    white-space: pre-line;
 }
 
 .movie-card__description {
@@ -79,8 +80,77 @@
     width: 30px;
     height: 30px;
     box-sizing: border-box;
-    border: solid 2px #E9D100;
     border-radius: 50%;
     Font-size: 12px;
     Line-height: 22px;
+    border: 1px solid #E9D100;
 }
+
+.color-great {
+    border-color: #66E900;
+}
+
+.color-good {
+    border-color: #E9D100;
+}
+
+.color-middling {
+    border-color: #E97E00;
+}
+
+.color-bad {
+    border-color: #E90000;
+}
+
+@media(max-width: 768px) {
+    .movie-card {
+        grid-template-columns: 60px auto;
+        grid-template-rows: 28px auto 20px 92px 39px;
+        gap: 7px 13px;
+        width: 100%;
+        min-width: 387px;
+        max-height: 245px;
+        padding: 6px 20px 0 10px;
+    }
+
+    .movie-card__img {
+        width: 60px;
+        height: 90px;
+        grid-row: 1/4; 
+    }
+    
+    .movie-card__name {
+        max-width: 200px;
+        margin-top: 0;
+    }
+    
+    .movie-card__date {
+        Font-size: 12px;
+        Line-height: 22px;
+        color: #827E7E;
+    }
+
+    .movie-card__genre {
+        width: auto;
+    }
+
+    .movie-card__description {
+        grid-column: 1/3; 
+    }
+
+    .movie-card__star-raiting {
+        display: flex;
+        justify-content: end;
+        font-size: 14px;
+        grid-column: 2/3;
+    }
+
+    .movie-card__raiting {
+        top: 5px;
+        right: 8px;
+    }
+
+    .ant-rate .movie-card__stars .css-dev-only-do-not-override-w8mnev {
+        text-align: end;
+    }
+  }

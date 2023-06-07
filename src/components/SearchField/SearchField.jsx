@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 import './SearchField.css'
 
 // const debounce = (fn, debounceTime) => {
@@ -13,6 +15,14 @@ import './SearchField.css'
 
 function SearchFiled(props) {
   const { handleInputChange, inputValue } = props
+  SearchFiled.defaultProps = {
+    inputValue: '',
+    handleInputChange: () => {},
+  }
+  SearchFiled.propTypes = {
+    inputValue: PropTypes.string,
+    handleInputChange: PropTypes.func,
+  }
   return (
     <form
       className="form"

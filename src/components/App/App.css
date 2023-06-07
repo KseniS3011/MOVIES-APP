@@ -39,3 +39,13 @@ button {
     max-width: 938px;
     margin: 0 auto;
   }
+
+  @media(max-width: 768px) {
+    .container-margin {
+      margin: 20px 16px;
+    }
+
+    .container {
+      min-width: 387px;
+    }
+  }

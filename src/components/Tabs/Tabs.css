@@ -1,4 +1,4 @@
-.header {
+.tabs {
     width: 145px;
     display: flex;
     gap: 20px;
@@ -11,22 +11,22 @@
     margin-bottom: 19px;
 }
 
-.header__item {
+.tabs__item {
     color: rgba(0, 0, 0, 0.65);
     padding: 13px 10px 19px;
+    border-bottom: solid 2px transparent;
+    transition: 0.3s;
 }
 
-.header__item--active {
+.tabs__item:hover {
+    color: rgba(63, 62, 62, 0.65);
+}
+
+.tabs__item--active{
     padding: 13px 10px 19px;
     color: #1890FF;
     border-bottom: solid 2px #1890FF;
-}
-
-.header__item--active:hover,
-.header__item--active:focus {
-    padding: 13px 10px 19px;
-    color: #1890FF;
-    border-bottom: solid 2px #1171ca;
-    transition: 0.3s;
+    transition: 0.5s;
+    z-index: 1;
 }
 
