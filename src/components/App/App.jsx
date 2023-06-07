@@ -283,7 +283,7 @@ class App extends Component {
               <MovieList movies={movies} isRated={isRated} addRating={this.handleAddRating} />
             ) : null}
           </Provider>
-          {isErrorRated ? null : movies.length && !isLoading ? (
+          {isErrorRated || isError ? null : movies.length && !isLoading ? (
             <Pagination
               pageSize={20}
               showSizeChanger={false}
