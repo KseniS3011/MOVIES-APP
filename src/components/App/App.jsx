@@ -33,16 +33,16 @@ class App extends Component {
   }
 
   debouncedGetMovies = debounce((value, page = 1) => {
-    movieApi.searchMovie(value, page).then((response) => {
+    movieApi.searchMovie(value, page, this.handleError).then((response) => {
       this.setState((prevState) => ({
         ...prevState,
         currentPage: page,
         totalResults: response.total_results,
         isLoading: true,
         isError: false,
-      }))
+      })).catch((error) => this.handleError(error))
       const newMovieList = this.handleRenderMovieList(response.results)
-      return this.handleUpdateMovieList(newMovieList)
+      this.handleUpdateMovieList(newMovieList)
     })
   }, 1000)
 
@@ -99,10 +99,14 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     const value = this.state.inputValue.trim() || 'star'
     if (value && this.state.inputValue !== prevState.inputValue) {
-      this.debouncedGetMovies(value, 1)
+      try {
+        this.debouncedGetMovies(value, 1)
+      } catch (error) {
+        this.handleError(error)
+      }
     }
     if (this.state.currentPage !== prevState.currentPage) {
-      this.debouncedGetMovies(value, this.state.currentPage)
+      this.handleGetMovieList()
     }
     if (this.state.currentRatedPage !== prevState.currentRatedPage) {
       this.handleGetRatedMovieList()
@@ -273,7 +277,7 @@ class App extends Component {
             />
           ) : null}
           {isLoading ? <Spin size="large" /> : null}
-          {isError ? <Alert description={this.errorMessage.loading} type="error" /> : null}
+          {isError && !isLoading ? <Alert description={this.errorMessage.loading} type="error" /> : null}
           {isErrorMovies ? <Alert description={this.errorMessage.noMovies} type="error" /> : null}
           {isErrorRated && !isLoading && !movies.length ? (
             <Alert description={this.errorMessage.noRatedMovies} type="error" />

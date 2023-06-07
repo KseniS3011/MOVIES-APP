@@ -140,7 +140,7 @@
 
     .movie-card__star-raiting {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         font-size: 14px;
         grid-column: 2/3;
     }
