@@ -204,9 +204,9 @@ class App extends Component {
     const newRatedList = []
     const newRatedItem = { id, gradeValue }
     const index = ratedMovies.findIndex((ratedItem) => ratedItem.id === id)
-    if (index && index !== -1) {
+    if (index !== -1) {
       newRatedList.push(...ratedMovies.slice(0, index), newRatedItem, ...ratedMovies.slice(index + 1))
-    } else if (!index || index === -1) {
+    } else {
       ratedMovies.push(newRatedItem)
       newRatedList.push(...ratedMovies)
     }
