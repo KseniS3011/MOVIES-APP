@@ -2,7 +2,7 @@
     position: relative;
     display: grid;
     grid-template-columns: 183px 228px;
-    grid-template-rows: auto auto 20px 129px 46px;
+    grid-template-rows: auto auto 20px 129px 44px;
     gap: 7px 19px;
     width: 454px;
     height: 281px;
@@ -25,7 +25,7 @@
     Font-size: 20px;
     Line-height: 28px;
     max-width: 200px;
-    max-height: 28px;
+    max-height: 30px;
     overflow: hidden;
 }
 
