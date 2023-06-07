@@ -40,7 +40,7 @@ class App extends Component {
         totalResults: response.total_results,
         isLoading: true,
         isError: false,
-      })).catch((error) => this.handleError(error))
+      }))
       const newMovieList = this.handleRenderMovieList(response.results)
       this.handleUpdateMovieList(newMovieList)
     })
@@ -114,7 +114,7 @@ class App extends Component {
   }
 
   componentDidCatch(error) {
-    this.handleError(error)
+    this.handleError(error.message)
   }
 
   handleInputChange(event) {
