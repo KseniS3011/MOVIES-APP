@@ -173,6 +173,7 @@ class App extends Component {
       isSearch: !prevState.isSearch,
       isRated: !prevState.isRated,
       isErrorRated: false,
+      isError: false,
     }))
   }
 
@@ -271,17 +272,17 @@ class App extends Component {
               inputValue={this.state.inputValue}
             />
           ) : null}
-          <Provider value={{ genres: this.state.genres }}>
-            {movies.length && !isLoading ? (
-              <MovieList movies={movies} isRated={isRated} addRating={this.handleAddRating} />
-            ) : null}
-          </Provider>
           {isLoading ? <Spin size="large" /> : null}
           {isError ? <Alert description={this.errorMessage.loading} type="error" /> : null}
           {isErrorMovies ? <Alert description={this.errorMessage.noMovies} type="error" /> : null}
           {isErrorRated && !isLoading && !movies.length ? (
             <Alert description={this.errorMessage.noRatedMovies} type="error" />
           ) : null}
+          <Provider value={{ genres: this.state.genres }}>
+            {movies.length && !isLoading && !isError ? (
+              <MovieList movies={movies} isRated={isRated} addRating={this.handleAddRating} />
+            ) : null}
+          </Provider>
           {isErrorRated ? null : movies.length && !isLoading ? (
             <Pagination
               pageSize={20}
