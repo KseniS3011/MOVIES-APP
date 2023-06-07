@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   debouncedGetMovies = debounce((value, page = 1) => {
-    movieApi.searchMovie(value, page).then((response) => {
+    movieApi.searchMovie(value, page, this.handleError).then((response) => {
       this.setState((prevState) => ({
         ...prevState,
         currentPage: page,

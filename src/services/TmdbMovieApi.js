@@ -3,19 +3,20 @@ const BASE_URL = 'https://api.themoviedb.org/3'
 const SESSION_RESOURSE = '/authentication/guest_session/new'
 
 const movieApi = {
-  getResource(url, options = null) {
+  getResource(url, fn = () => {}, options = null) {
     return fetch(url, options)
       .then((res) => (res.ok ? res : Promise.reject(res)))
       .then((result) => result.json())
       .then((response) => response)
       .catch((error) => {
+        fn()
         throw new Error(error.message)
       })
   },
 
-  searchMovie(queryValue, currentPage = 1) {
+  searchMovie(queryValue, currentPage = 1, fn = () => {}) {
     const url = `${BASE_URL}/search/movie?query=${queryValue}&api_key=${API_KEY}&page=${currentPage}`
-    return this.getResource(url)
+    return this.getResource(url, fn)
   },
 
   getGenres() {
@@ -28,7 +29,7 @@ const movieApi = {
     return this.getResource(url)
   },
 
-  sendRatedMovie(rating, movieId, guestSessionId) {
+  sendRatedMovie(rating, movieId, guestSessionId, fn = () => {}) {
     const url = `${BASE_URL}/movie/${movieId}/rating?api_key=${API_KEY}&guest_session_id=${guestSessionId}`
     const options = {
       method: 'POST',
@@ -38,7 +39,7 @@ const movieApi = {
       },
       body: JSON.stringify({ value: rating }),
     }
-    return this.getResource(url, options)
+    return this.getResource(url, fn, options)
   },
 
   getRatedMovies(guestSessionId, currentPage = 1) {
